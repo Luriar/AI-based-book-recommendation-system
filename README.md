@@ -64,7 +64,7 @@
 
 ### Optimization
 - **멀티스레드 처리** (ExecutorService)
-- **GPU 가속** (torch.cuda)
+- **비동기 처리** (asyncio)
 - **벡터 캐싱** - 중복 계산 방지
 
 | 항목 | 최적화 전 | 최적화 후 | 개선율 |
@@ -76,7 +76,6 @@
 **최적화 전략:**
 - 멀티스레드 배치 처리 (최대 40 스레드)
 - RateLimiter로 API 호출 제어 (초당 4회)
-- GPU 가속 벡터 연산
 - 비동기 처리 (asyncio)
 - 벡터 캐싱 및 사전 계산
 
@@ -121,7 +120,8 @@
 ### 기술적 성과
 - **LLM API 비교 분석**: GPT-4, Google PaLM 2, DeepSeek 비용/성능 비교
 - **하이브리드 추천 알고리즘 설계**: 협업 필터링 + 콘텐츠 기반 + 벡터 임베딩
-- **대규모 데이터 처리 최적화**: 멀티스레드, GPU 가속, 캐싱 전략
+- **검색–생성 결합 구조(RAG 원형)**: 임베딩 검색으로 후보 선정 → LLM이 추천문 생성 — 이후 OPIK·AITCH RAG 아키텍처로 발전
+- **대규모 데이터 처리 최적화**: 멀티스레드, 비동기 처리, 캐싱 전략
 - **전체 시스템 단독 개발**: 기획, 백엔드, 프론트엔드, AI 알고리즘, DB 설계
 
 ### 학술적 성과
@@ -137,7 +137,7 @@
 2. **성능 최적화**: 병목 지점 분석 및 해결
    - API 호출 속도 제어 (Rate Limiting)
    - 멀티스레드 처리로 대량 작업 가속
-   - GPU 가속으로 벡터 연산 최적화
+   - 벡터 캐싱·비동기 처리로 연산 최적화
 
 3. **전체 시스템 설계**: 모듈화와 확장성 고려
    - 프론트엔드/백엔드 분리
@@ -154,13 +154,14 @@
 - **개발자**: 윤준호 (Yoon Joonho)
 - **개발 기간**: 2025.1 ~ 2025.06 (6개월)
 - **역할**: 단독 개발 (기획, 설계, 구현, 테스트)
+- **소스 코드**: 비공개 관리 — 요청 시 제공
 - **학교**: 북경과학기술대학교 (Beijing University of Science and Technology)
 - **전공**: 컴퓨터공학과 (Computer Science and Technology)
 
 
 ## Contact
 
-- Email: joonhoeric01@gmail.com
+- Email: yoonjoonho.kr@gmail.com
 - GitHub: [@Luriar](https://github.com/Luriar)
   
 ## License
